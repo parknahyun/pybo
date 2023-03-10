@@ -126,10 +126,11 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 # 로그인 성공후 이동하는 URL
 LOGIN_REDIRECT_URL = '/'
 
-# 로그아웃시 성공후 이동하는 URL
+# 로그아웃시 이동하는 URL
 LOGOUT_REDIRECT_URL = '/'
 
 # 로깅설정
@@ -151,8 +152,8 @@ LOGGING = {
             'style': '{',
         },
         'standard': {
-            'format':'%(asctime)s [%(levelname)s] %(name)s:%(message)s'
-        }
+            'format': '%(asctime)s [%(levelname)s] %(name)s: %(message)s'
+        },
     },
     'handlers': {
         'console': {
@@ -170,19 +171,19 @@ LOGGING = {
             'filters': ['require_debug_false'],
             'class': 'django.utils.log.AdminEmailHandler'
         },
-        'file' : {
-            'level' : 'INFO',
-            'filters' : [ 'require_debug_false'],
-            'class' : 'logging.handlers.RotatingFileHandler',
-            'filename' : BASE_DIR / 'logs/mysite.log',
-            'maxBytes' : 1024*1024*5, #5mb
-            'backupCount' : 5,
-            'formatter' : 'standard',
-        }
+        'file': {
+            'level': 'INFO',
+            'filters': ['require_debug_false'],
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': BASE_DIR / 'logs/mysite.log',
+            'maxBytes': 1024*1024*5,  # 5 MB
+            'backupCount': 5,
+            'formatter': 'standard',
+        },
     },
     'loggers': {
         'django': {
-            'handlers': ['console', 'mail_admins','file'],
+            'handlers': ['console', 'mail_admins', 'file'],
             'level': 'INFO',
         },
         'django.server': {
@@ -190,9 +191,9 @@ LOGGING = {
             'level': 'INFO',
             'propagate': False,
         },
-        'pybo' : {
-            'handlers' : ['console','file'],
-            'level' : 'INFO',
-        }
+        'pybo': {
+            'handlers': ['console', 'file'],
+            'level': 'INFO',
+        },
     }
 }
